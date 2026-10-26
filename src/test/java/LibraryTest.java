@@ -57,7 +57,8 @@ class LibraryTest{
     }
 
     @Test
-    @DisplayName("Тест 4: Ошибка при попытке возврата книги, которая не находится на руках")
+    @DisplayName("Тест 4: Ошибка при попытке возврата книги, которая не находится на руках(Update" +
+            ")")
     void testReturnBookNotIssuedFails(){
         Book book = new Book(1, "Призрачный снимок", "Эрве Гибер");
         repository.save(book);
