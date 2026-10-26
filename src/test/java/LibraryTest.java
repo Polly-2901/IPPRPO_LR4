@@ -55,4 +55,15 @@ class LibraryTest{
 
         assertTrue(result, "После возврата книга должна быть доступна для выдачи другому читателю");
     }
+
+    @Test
+    @DisplayName("Тест 4: Ошибка при попытке возврата книги, которая не находится на руках")
+    void testReturnBookNotIssuedFails(){
+        Book book = new Book(1, "Призрачный снимок", "Эрве Гибер");
+        repository.save(book);
+
+        boolean result = library.returnBook(1);
+
+        assertFalse(result, "Нельзя вернуть книгу, которая не была выдана");
+    }
 }

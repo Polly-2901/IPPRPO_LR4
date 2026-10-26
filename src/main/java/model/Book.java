@@ -31,8 +31,8 @@ public class Book{
         return isIssued;
     }
 
-    public void setIssued(boolean isssued){
-        isIssued = isssued;
+    public void setIssued(boolean issued){
+        isIssued = issued;
     }
 
     public Integer getCurrentReaderId(){
