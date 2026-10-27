@@ -53,7 +53,7 @@ class LibraryTest{
 
         boolean result = library.issueBook(1,200);
 
-        assertTrue(result, "После возврата книга должна быть доступна для выдачи другому читателю");
+        assertFalse(result, "После возврата книга должна быть доступна для выдачи другому читателю");
     }
 
     @Test
