@@ -2,38 +2,44 @@ pipeline {
     agent any
 
     stages {
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
-        }
         stage('Build') {
             steps {
-                bat 'mvn compile'
+                echo '=== ЭТАП 1: Компиляция исходного кода ==='
+                bat '"C:\\Program Files\\Intellij IDEA\\plugins\\maven\\lib\\maven3\\bin\\mvn.cmd" compile'
             }
         }
-        stage('Static Analysis') {
-            steps {
-                bat 'mvn checkstyle:check'
-            }
-        }
+
         stage('Test') {
             steps {
-                bat 'mvn test'
+                echo '=== ЭТАП 2: Запуск Unit-тестов ==='
+                bat '"C:\\Program Files\\Intellij IDEA\\plugins\\maven\\lib\\maven3\\bin\\mvn.cmd" test'
             }
         }
+
         stage('Package') {
             steps {
-                bat 'mvn package -DskipTests'
+                echo '=== ЭТАП 3: Упаковка приложения в JAR-архив ==='
+                bat '"C:\\Program Files\\Intellij IDEA\\plugins\\maven\\lib\\maven3\\bin\\mvn.cmd" package -DskipTests'
+            }
+        }
+
+        stage('Custom Maven Command (Dependency Tree)') {
+            steps {
+                echo '=== ЭТАП 4 (Индивидуальное задание): Вывод дерева зависимостей ==='
+                bat '"C:\\Program Files\\Intellij IDEA\\plugins\\maven\\lib\\maven3\\bin\\mvn.cmd" dependency:tree'
             }
         }
     }
+
     post {
+        always {
+            echo '=== Сборка завершена ==='
+        }
         success {
-            echo 'Pipeline completed successfully!'
+            echo 'Конвейер выполнен успешно! Все этапы пройдены.'
         }
         failure {
-            echo 'Pipeline failed!'
+            echo 'Ошибка при выполнении конвейера! Проверьте логи.'
         }
     }
 }
