@@ -21,7 +21,7 @@ public class Library{
         Optional<Book> optionalBook = bookRepository.findById(bookId);
 
         if(optionalBook.isEmpty()){
-            logger.warn("Attempt to issue non-existent book with id: {}", bookId);
+            logger.warn("Попытка выдать несуществующую книгу с id: {}", bookId);
             return false;
         }
 
@@ -33,7 +33,7 @@ public class Library{
         }
 
         if(book.isIssued()){
-            logger.warn("Attempt to issue already booked/unavailable book: {}", book.getTitle());
+            logger.warn("Попытка оформить уже забронированную/недоступную книгу: {}", book.getTitle());
             return false;
         }
 
@@ -41,7 +41,7 @@ public class Library{
         book.setCurrentReaderId(readerId);
         bookRepository.save(book);
 
-        logger.info("Book successfully issued to reader: {}", book.getTitle());
+        logger.info("Книга выдана читателю: {}", book.getTitle());
 
         return true;
     }
@@ -50,14 +50,14 @@ public class Library{
         Optional<Book> optionalBook = bookRepository.findById(bookId);
 
         if(optionalBook.isEmpty()){
-            logger.warn("Attempt to return non-existent book with id: {}", bookId);
+            logger.warn("Попытка выдать несуществующую книгу с id: {}", bookId);
             return false;
         }
 
         Book book = optionalBook.get();
 
         if(!book.isIssued()){
-            logger.warn("Attempt to return a book that was not issued: id {}", bookId);
+            logger.warn("Попытка вернуть книгу, которая не была выдана: id {}", bookId);
             return false;
         }
 
@@ -65,7 +65,7 @@ public class Library{
         book.setCurrentReaderId(null);
         bookRepository.save(book);
 
-        logger.info("Book successfully returned: {}", book.getTitle());
+        logger.info("Книга возвращена: {}", book.getTitle());
 
         return true;
     }
