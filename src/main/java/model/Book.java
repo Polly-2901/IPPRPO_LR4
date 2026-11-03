@@ -16,7 +16,7 @@ public class Book{
         this.currentReaderId = null;
     }
 
-    public Integer GetId(){
+    public Integer getId(){
         return  id;
     }
 
