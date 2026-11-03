@@ -6,7 +6,7 @@
 
     <groupId>org.example</groupId>
     <artifactId>Lab2</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>5.0-SNAPSHOT</version>
 
     <properties>
         <maven.compiler.source>26</maven.compiler.source>
@@ -15,7 +15,6 @@
     </properties>
 
     <dependencies>
-        <!-- JUnit для тестов -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
@@ -23,22 +22,18 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- Apache Commons Lang -->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>3.14.0</version>
         </dependency>
 
-        <!-- ЗАВИСИМОСТИ ДЛЯ ЛОГИРОВАНИЯ (ЛР №5) -->
-        <!-- SLF4J API -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>2.0.12</version>
         </dependency>
 
-        <!-- Logback Classic (реализация) -->
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
@@ -58,7 +53,7 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.2.5</version>
             </plugin>
-            <!-- ПЛАГИН CHECKSTYLE -->
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>

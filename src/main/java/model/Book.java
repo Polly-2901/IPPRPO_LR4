@@ -1,4 +1,5 @@
 package model;
+//import java.util.ArrayList;
 
 public class Book{
     private final Integer id;
@@ -15,7 +16,7 @@ public class Book{
         this.currentReaderId = null;
     }
 
-    public Integer getId(){
+    public Integer GetId(){
         return  id;
     }
 
